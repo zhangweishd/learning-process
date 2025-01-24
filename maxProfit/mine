@@ -21,3 +21,4 @@ class Solution(object):
             return max_profit
         else:
             return 0
+# 创建了列表，当数据过大时会内存不足
