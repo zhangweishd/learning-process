@@ -1,0 +1,28 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        # 利用贪心算法，求最大收益
+        # 求最大利润，有更大就更新
+        # 同时找最小价格，有更小就更新
+        # 在最小价格更新时，之后的价格减新最小价格肯定比旧最小价格大，即使利润不高于最大利润，利润只是不会更新，不会更小
+        if len(prices) <= 1:
+            max_profit = 0
+            return max_profit
+        else:
+            # 初始化最大价格为无穷大，最大利润为0
+            min_price = float('inf')
+            max_profit = 0
+            # 遍历每一天的价格
+            for price in prices:
+                # 更新最小价格
+                if price < min_price:
+                    min_price = price
+                # 更新最大利润
+                elif price - min_price > max_profit:
+                    max_profit = price - min_price
+            if max_profit < 0:
+                max_profit = 0
+            return max_profit
