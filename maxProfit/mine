@@ -1,1 +1,23 @@
-
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if len(prices)>1:
+            earn = []
+            for i in range(len(prices)-1):
+                temp_earn_list = []
+                for j in range(i+1, len(prices)):
+                    temp_earn_list.append(prices[j]-prices[i])
+                earn.append(temp_earn_list)
+            print(earn)
+            max_profit_list = []
+            for i in range(len(earn)):
+                max_profit_list.append(max(earn[i]))
+            max_profit = max(max_profit_list)
+            if max_profit < 0:
+                max_profit = 0
+            return max_profit
+        else:
+            return 0
