@@ -1,0 +1,17 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        # 利用贪心算法，遍历价格，当明天价格比今天高时，今天买入，明天卖出
+        # 依次累加利润就是总利润
+        if len(prices) <= 1:
+            max_profit = 0
+        else:
+            # 初始化利润为0
+            max_profit = 0
+            for i in range(len(prices)-1):
+                if prices[i+1] > prices[i]:
+                    max_profit += prices[i+1]-prices[i]
+        return max_profit
